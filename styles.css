@@ -1,0 +1,237 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('library-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+nav {
+  background: #ffffff;
+  padding: 15px 0;
+  border-bottom: 3px solid #6a82fb;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: #6a82fb;
+  color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Main Content */
+main {
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  margin: 30px auto;
+  max-width: 1200px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #6a82fb;
+  border-bottom: 4px solid #fc5c7d;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+button {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #6a82fb;
+  transition: all 0.3s ease;
+}
+
+input[type="text"] {
+  background: #f9f9f9;
+}
+
+input[type="text"]:focus {
+  border-color: #fc5c7d;
+  box-shadow: 0px 0px 10px rgba(252, 92, 125, 0.5);
+  outline: none;
+}
+
+button {
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+table th {
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Hover Effects */
+button:hover,
+nav ul li a:hover {
+  transform: scale(1.08);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #355c7d, #6a82fb);
+  color: #e0e0e0;
+}
+
+body.dark-mode nav {
+  background-color: #333333;
+}
+
+body.dark-mode nav ul li a {
+  color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a:hover {
+  background-color: #6a82fb;
+  color: #ffffff;
+}
+
+body.dark-mode main {
+  background-color: rgba(48, 48, 48, 0.95);
+}
+
+body.dark-mode table th {
+  background: linear-gradient(135deg, #355c7d, #6a82fb);
+}
+
+body.dark-mode footer {
+  background: linear-gradient(135deg, #355c7d, #6a82fb);
+}
+
+body.dark-mode button {
+  background: linear-gradient(135deg, #355c7d, #6a82fb);
+}
+
+body.dark-mode button:hover {
+  background: linear-gradient(135deg, #6a82fb, #355c7d);
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System - Sign Up</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('library-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h2 {
+      color: #6a82fb;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #6a82fb;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #333;
+      transition: border-color 0.3s ease;
+    }
+
+    select:focus, input:focus {
+      border-color: #fc5c7d;
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .links a {
+      color: #6a82fb;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+      color: #fc5c7d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <select id="role" name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="librarian">Librarian</option>
+        <option value="member">Member</option>
+      </select>
+      <input type="text" id="name" name="name" placeholder="Full Name" required>
+      <input type="email" id="email" name="email" placeholder="Email Address" required>
+      <input type="text" id="phone" name="phone" placeholder="Phone (Optional)">
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+      <div id="authCodeField" class="hidden">
+        <input type="text" id="auth_code" name="auth_code" placeholder="Authorization Code (Librarians Only)">
+      </div>
+      <div id="errorMessage" class="error hidden"></div>
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="links">
+      <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("signupForm");
+    const roleSelect = document.getElementById("role");
+    const authCodeField = document.getElementById("authCodeField");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Toggle Authorization Code field based on role
+    roleSelect.addEventListener("change", () => {
+      if (roleSelect.value === "librarian") {
+        authCodeField.classList.remove("hidden");
+      } else {
+        authCodeField.classList.add("hidden");
+      }
+    });
+
+    // Form validation on submit
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent default form submission
+      errorMessage.classList.add("hidden"); // Hide error message initially
+      errorMessage.innerText = "";
+
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm_password").value;
+      const role = roleSelect.value;
+
+      // Validate passwords match
+      if (password !== confirmPassword) {
+        errorMessage.innerText = "Passwords do not match.";
+        errorMessage.classList.remove("hidden");
+        return;
+      }
+
+      // Validate Authorization Code for Librarian
+      if (role === "librarian") {
+        const authCode = document.getElementById("auth_code").value.trim();
+        if (!authCode) {
+          errorMessage.innerText = "Authorization Code is required for Librarians.";
+          errorMessage.classList.remove("hidden");
+          return;
+        }
+      }
+
+      // Simulated success
+      alert("Check your email for verification.");
+      form.reset(); // Clear the form
+      authCodeField.classList.add("hidden"); // Hide the auth code field
+    });
+  </script>
+</body>
+</html>
